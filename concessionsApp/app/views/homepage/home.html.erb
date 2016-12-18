@@ -1,0 +1,14 @@
+<h1>Welcome to Shawnee Concessions</h1>
+<h3>Choose Your location</h3>
+
+<% @locations.each do |l| %>
+  <div class='location_name'>
+    <%= link_to l.location , location_path(l)%>
+    <% if l.open? %>
+      Open
+    <% else %>
+      Closed
+    <% end %>
+    </br>
+  </div>
+<% end %>
