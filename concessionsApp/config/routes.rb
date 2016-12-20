@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :stocks
   resources :items
 
-  get 'locations/:id/set_availability', to: 'locations#set_availability'
+  get 'locations/:id/set_stock', to: 'locations#set_stock', as: :set_stock_location
+  put 'locations/:id/update_stock', to: 'locations#update_stock', as: :update_stock_location
+  
+  get 'locations/:id/set_availability', to: 'locations#set_availability', as: :set_availability_location
+  put 'locations/:id/update_availability', to: 'locations#update_availability', as: :update_availability_location
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -12,13 +12,18 @@
   <% end %>
 
 
+
+
+
+
+
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.select :category, [['Candy', 0], ['Cold Beverage', 1], ['Hot Beverage', 2], ['Snack', 3], ['Morning ', 4], ['Fruit', 5]] %>
+    <%= f.select :category, [['Candy', 0], ['Snack', 1], ['Cold Beverage', 2], ['Hot Beverage', 3], ['Main', 4], ['Morning ', 5], ['Fruit', 6]] %>
   </div>
   <div class="field">
     <%= f.label :price %><br>

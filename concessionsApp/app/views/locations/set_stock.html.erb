@@ -1,0 +1,35 @@
+<h1>Update The Stock for <%= @location.location %></h1>
+
+<h2>Items In Stock Here</h2>
+<table id="table_1">
+  <tbody>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Remove</th>
+  </tr>
+  <% @itemsAtLocation.each do |i| %>
+    <tr>
+      <td><%= i.name %></td>
+      <td><%= i.category %></td>
+      <td><button class='switch'>Switch</button></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h2>Items Not In Stock</h2>
+<table id='table_2'>
+  <tbody>
+  <th>Name</th>
+  <th>Category</th>
+  <th>Add</th>
+  <% @itemsNotAtLocation.each do |i| %>
+    <tr>
+      <td><%= i.name %></td>
+      <td><%= i.category %></td>
+      <td><button class='switch'>Switch</button></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

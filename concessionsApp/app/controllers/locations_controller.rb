@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:set_availability, :show, :edit, :update, :destroy]
+  before_action :set_location
 
   # GET /locations
   def index
@@ -8,15 +8,34 @@ class LocationsController < ApplicationController
 
   # GET /locations/1
   def show
+    @items = @location.items
   end
 
   # GET /locations/new
   def new
-    @location = Location.new
   end
 
-  def set_availability
-    @items = Stock.where(available: 'true')
+  def set_stock
+    @itemsAtLocation = @location.items 
+    allItems = Item.all
+    @itemsNotAtLocation = allItems - @itemsAtLocation
+  end
+
+  def update_stock 
+  end
+
+  def set_availability 
+    items_here = Item.all 
+    @candy = items_here.where("category = '0'") 
+    @snacks = items_here.where("category = '1'") 
+    @cBev = items_here.where("category = '2'") 
+    @hBev = items_here.where("category = '3'") 
+    @cooked = items_here.where("category = '4'") 
+    @morning = items_here.where("category = '5'") 
+    @fruit = items_here.where("category = '6'") 
+  end
+
+  def update_availability 
   end
 
   # GET /locations/1/edit

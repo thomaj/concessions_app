@@ -1,35 +1,14 @@
-<h1>Set Availability</h1>
+<h1>Set availability for items at <%= @location.location %></h1>
 
-<h2>Items that will be available today</h2>
-<table id="table_1">
-  <tbody>
-  <tr>
-    <th>Name</th>
-    <th>Category</th>
-    <th>Remove</th>
-  </tr>
-  <% (1..8).each do |i| %>
-    <tr>
-      <td><%= i%></td>
-      <td><%= i%></td>
-      <td><button class='switch'>Switch</button></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= form_tag(update_availability_location_path(@location), method: 'put') %>
+<h3><%= categoryName(0) %></h3>
+<ul>
+<% @candy.each do |i| %>
+  <li><%= i.name %></li>
+  <li>Available <%= i.stocks(@location).available %></li>
+  <%= check_box_tag(i.name, i.id, checked: i.stocks ) %>
 
-<h2>Items that will not be available today</h2>
-<table id='table_2'>
-  <th>Name</th>
-  <th>Category</th>
-  <th>Add</th>
-  <tbody>
-  <% @items.each do |i| %>
-    <tr>
-      <td><%= i.name %></td>
-      <td><%= i.category %></td>
-      <td><button class='switch'>Switch</button></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<% end %>
+</ul>
+<%= check_box_tag('snack', '') %>
+<%= submit_tag 'Submit' %>
